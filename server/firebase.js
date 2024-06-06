@@ -25,8 +25,18 @@ const getPartnerNames = async () => {
   return partnerNamesArray;
 }
 
+const getPartnerInfo = async (partnerName) => {
+  const partnerInfo = await getDocs(collection(db, "partners"));
+  partnerInfo.forEach((doc) => {
+    if (doc.data().name === partnerName) {
+      console.log(doc.id, " => ", doc.data());
+      return doc.data();
+    }
+  });
+}
+
 const getFirebaseApp = () => {
     return app;
 }
 
-export { getFirebaseApp, uploadData, getPartnerNames, db };
+export { getFirebaseApp, uploadData, getPartnerNames, getPartnerInfo, db };
