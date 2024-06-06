@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { uploadData } from './firebase.js';
+import { uploadData, getPartnerNames } from './firebase.js';
 
 const app = express();
 const port = 3000;
@@ -23,9 +23,16 @@ app.post('/uploadData', async (req, res) => {
         logoSource: req.body.logoSource,
         active: req.body.active,
     };
+
+    // debug
     console.log('Data:', data);
     await uploadData(data);
     return 'Data uploaded';
+});
+
+app.get('/getPartnerNames', async (req, res) => {
+    const partnerNames = await getPartnerNames();
+    res.send(partnerNames);
 });
 
 app.listen(port, () => {

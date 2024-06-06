@@ -8,6 +8,7 @@ function Form() {
             active: e.target[3].checked
         };
 
+        // debug
         console.log(formData)
 
         try {
