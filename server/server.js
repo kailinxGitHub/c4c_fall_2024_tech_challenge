@@ -15,7 +15,13 @@ app.get('/okk', (req, res) => {
 
 // TODO: temp, remove
 app.post('/test', async (req, res) => {
-    await uploadData();
+    const data1 = {
+        name: 'Los Angeles',
+        state: 'CA',
+        country: 'USA'
+    };
+
+    await uploadData(data1);
     return 'Data uploaded';
 });
 
