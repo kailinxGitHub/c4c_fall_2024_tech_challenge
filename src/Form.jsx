@@ -11,29 +11,27 @@ function Form() {
         // debug
         console.log(formData)
 
-        try {
-            const response = await fetch('http://localhost:3000/uploadData', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+        window.location.reload();
 
-            if (response.ok) {
-                alert('Form submitted successfully!');
-            } else {
-                alert('Form submission failed!');
-            }
-        } catch (error) {
-            console.error('Error submitting the form:', error);
+        const response = await fetch('http://localhost:3000/uploadData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+            alert('Form submitted successfully!');
+        } else {
+            alert('Form submission failed!');
         }
     }
 
     return (
         <form
             className="max-w-sm mx-auto grid grid-cols-1 mt-6 px-5 py-5 border border-green-400 rounded-lg border-dashed"
-            onSubmit={handleSubmit}>
+            onSubmit={handleSubmit}
         >
             <div className="mb-5">
                 <label htmlFor="last-name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Partner

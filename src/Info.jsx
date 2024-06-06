@@ -16,7 +16,7 @@ const Info = ({ selectedOption }) => {
         return (
             <div
                 className="max-w-sm mx-auto grid grid-cols-1 px-5 py-5 mt-6 border border-green-400 rounded-lg border-dashed">
-                <h1>Select a country to see the details</h1>
+                <h1>Select a partner to see the details</h1>
             </div>
         );
     }
