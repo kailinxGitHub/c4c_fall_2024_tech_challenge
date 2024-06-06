@@ -1,11 +1,14 @@
 import express from 'express';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 import { uploadData } from './firebase.js';
 
 const app = express();
 const port = 3000;
 
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // TODO: temp, remove
 app.get('/okk', (req, res) => {
@@ -13,15 +16,15 @@ app.get('/okk', (req, res) => {
     res.send(data);
 });
 
-// TODO: temp, remove
-app.post('/test', async (req, res) => {
-    const data1 = {
-        name: 'Los Angeles',
-        state: 'CA',
-        country: 'USA'
+app.post('/uploadData', async (req, res) => {
+    const data = {
+        name: req.body.name,
+        description: req.body.description,
+        logoSource: req.body.logoSource,
+        active: req.body.active,
     };
-
-    await uploadData(data1);
+    console.log('Data:', data);
+    await uploadData(data);
     return 'Data uploaded';
 });
 
