@@ -14,7 +14,7 @@ app.get('/okk', (req, res) => {
 });
 
 // TODO: temp, remove
-app.get('/test', async (req, res) => {
+app.post('/test', async (req, res) => {
     await uploadData();
     return 'Data uploaded';
 });
