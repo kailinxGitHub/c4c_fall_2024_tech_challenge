@@ -13,5 +13,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Info />
     </div>
 
-  </React.StrictMode>,
+  </React.StrictMode>
 )
