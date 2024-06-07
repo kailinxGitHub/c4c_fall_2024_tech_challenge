@@ -1,5 +1,5 @@
 import { initializeApp} from "firebase/app";
-import { getFirestore, doc, setDoc, collection, addDoc, getDocs } from 'firebase/firestore';
+import { getFirestore, doc, setDoc, collection, addDoc, getDocs, deleteDoc } from 'firebase/firestore';
 import { firebaseConfig } from './config.js';
 
 const app = initializeApp(firebaseConfig);
@@ -38,8 +38,22 @@ const getPartnerInfo = async (partnerName) => {
   }
 }
 
+const deletePartner = async (partnerName) => {
+  const partnerInfo = await getDocs(collection(db, "partners"));
+  const partnerDoc = partnerInfo.docs.find(doc => doc.data().name === partnerName);
+
+  if (partnerDoc) {
+    await deleteDoc(doc(db, "partners", partnerDoc.id));
+    console.log("Document deleted");
+    return "Document deleted";
+  } else {
+    console.log("No partner found with the given name");
+    return "No partner found with the given name";
+  }
+}
+
 const getFirebaseApp = () => {
     return app;
 }
 
-export { getFirebaseApp, uploadData, getPartnerNames, getPartnerInfo, db };
+export { getFirebaseApp, uploadData, getPartnerNames, getPartnerInfo, deletePartner, db };

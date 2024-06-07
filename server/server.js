@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { uploadData, getPartnerNames, getPartnerInfo } from './firebase.js';
+import { uploadData, getPartnerNames, getPartnerInfo, deletePartner } from './firebase.js';
 
 const app = express();
 const port = 3000;
@@ -38,6 +38,12 @@ app.get('/getPartnerNames', async (req, res) => {
 app.get('/getPartnerInfo', async (req, res) => {
     const partnerName = req.query.name;
     const partnerInfo = await getPartnerInfo(partnerName);
+    res.send(partnerInfo);
+});
+
+app.get('/deletePartner', async (req, res) => {
+    const partnerName = req.query.name;
+    const partnerInfo = await deletePartner(partnerName);
     res.send(partnerInfo);
 });
 
