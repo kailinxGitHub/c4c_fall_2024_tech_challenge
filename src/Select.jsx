@@ -2,9 +2,6 @@ import {useEffect, useState} from "react";
 
 const Select = ({ setSelectedOption }) => {
     const [selectOptions, setSelectOptions] = useState([]);
-    const handleSelectChange = (event) => {
-        setSelectedOption(event.target.value);
-    };
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -17,6 +14,11 @@ const Select = ({ setSelectedOption }) => {
         }
         fetchItems();
     }, []);
+
+    const handleSelectChange = (e) => {
+        setSelectedOption(e.target.value);
+        // console.log(e.target.value)
+    }
 
     return (
     <div className="flex flex-col justify-center items-center">

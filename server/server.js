@@ -38,7 +38,6 @@ app.get('/getPartnerNames', async (req, res) => {
 app.get('/getPartnerInfo', async (req, res) => {
     const partnerName = req.query.name;
     const partnerInfo = await getPartnerInfo(partnerName);
-    console.log(partnerName)
     res.send(partnerInfo);
 });
 

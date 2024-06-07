@@ -27,12 +27,15 @@ const getPartnerNames = async () => {
 
 const getPartnerInfo = async (partnerName) => {
   const partnerInfo = await getDocs(collection(db, "partners"));
-  partnerInfo.forEach((doc) => {
-    if (doc.data().name === partnerName) {
-      console.log(doc.id, " => ", doc.data());
-      return doc.data();
-    }
-  });
+  const partnerDoc = partnerInfo.docs.find(doc => doc.data().name === partnerName);
+
+  if (partnerDoc) {
+    console.log(partnerDoc.id, " => ", partnerDoc.data());
+    return partnerDoc.data();
+  } else {
+    console.log("No partner found with the given name");
+    return null;
+  }
 }
 
 const getFirebaseApp = () => {
