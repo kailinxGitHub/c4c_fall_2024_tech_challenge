@@ -18,7 +18,7 @@ const Info = ({ selectedOption }) => {
     if (!selectedOption) {
         return (
             <div className="max-w-sm mx-auto grid grid-cols-1 px-5 py-5 mt-6 border border-green-400 rounded-lg border-dashed">
-                <h1>Select a partner to see the details</h1>
+                <h1>Select a partner to see its infos!</h1>
             </div>
         );
     }
@@ -30,7 +30,7 @@ const Info = ({ selectedOption }) => {
             <img className="object-contain h-48 w-96" src={data.logoSource} alt="Logo" />
             <h1 className="Title justify-center leading-none tracking-tight text-gray-900 md:text-5xl lg:text-2xl dark:text-black">{data.name || 'Loading...'}</h1>
             <p>{data.description || 'Loading...'}</p>
-            <h1>{data.active ? 'Active' : 'Not Active'}</h1>
+            <h1 className="text-blue-800">{data.active ? 'Active' : 'Not Active'}</h1>
             <button
                 className="h-10 px-5 m-2 text-red-100 transition-colors duration-150 bg-red-700 rounded-lg focus:shadow-outline hover:bg-red-800"
                 onClick={() => {
