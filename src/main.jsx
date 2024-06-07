@@ -5,7 +5,6 @@ import Title from './Title.jsx'
 import Select from "./Select.jsx";
 import Form from './Form.jsx'
 import Info from './Info.jsx'
-import Opp from './Opp.jsx'
 
 const App = () => {
     const [selectedOption, setSelectedOption] = useState('');

@@ -10,12 +10,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// TODO: temp, remove
-app.get('/okk', (req, res) => {
-    const data = { message: 'Hello from the backend!' };
-    res.send(data);
-});
-
 app.post('/uploadData', async (req, res) => {
     const data = {
         name: req.body.name,
